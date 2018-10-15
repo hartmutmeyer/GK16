@@ -382,24 +382,49 @@ INSERT INTO beziehung VALUES
 
 # 2A) Zeige eine Liste aller Besitzer (Vor- und Nachname) und ihrer Tiere (Name und Tierart)
 #     an. Sortiere die Liste absteigend nach dem Namen der Tiere.
-
+#SELECT besitzer.vorname, besitzer.nachname, tier.name, tier.tierart 
+#FROM besitzer, tier, beziehung 
+#WHERE besitzer_id = beziehung_besitzer_id
+#AND tier_id = beziehung_tier_id 
+#ORDER BY tier.name DESC;
 
 # 2B) Liste alle Besitzer von Maja auf (Vor- und Nachname).
-
+#SELECT besitzer.vorname, besitzer.nachname
+#FROM besitzer, tier, beziehung 
+#WHERE besitzer_id = beziehung_besitzer_id
+#AND tier_id = beziehung_tier_id
+#AND tier.name = 'Maja';
 
 # 2C) Zähle die Anzahl der Besitzer von Blacky.
-
+#SELECT COUNT(*)
+#FROM besitzer, tier, beziehung 
+#WHERE besitzer_id = beziehung_besitzer_id
+#AND tier_id = beziehung_tier_id
+#AND tier.name = 'Blacky';
 
 # 2D) Erstelle eine Liste, die angibt, wie viele Tiere jede einzelne Person besitzt
 #     (Ausgabe: Anzahl, Vor- und Nachname).
-
+#SELECT COUNT(*), besitzer.vorname, besitzer.nachname
+#FROM besitzer, tier, beziehung 
+#WHERE besitzer_id = beziehung_besitzer_id
+#AND tier_id = beziehung_tier_id
+#GROUP BY besitzer_id;
 
 # 2E) Liste die vollständigen Daten aller Besitzer auf, deren Telefonnummer nicht bekannt ist.
-
+#SELECT * 
+#FROM besitzer
+#WHERE telefonnr IS NULL;
 
 # 2F) Liste Straße, PLZ und Ort aller Besitzer auf. Dabei soll jede Adresse nur einmal
 #     ausgegeben werden.
+#SELECT straße, plz, ort
+#FROM besitzer
+#GROUP BY straße;
 
+# oder alternativ:
+
+#SELECT DISTINCT straße, plz, ort
+#FROM besitzer;
 
 # Übung 4, Aufgabe 3
 
